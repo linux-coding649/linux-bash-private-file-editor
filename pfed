@@ -1,0 +1,61 @@
+#!/bin/bash
+
+if [ $# -ne 2 ] && [ $# -ne 1 ] || [ "$1" = '--help' ];
+then
+    echo -e "GNU PFED v1.0.0\nUsage: pfed filename"
+    exit 1
+fi
+
+if [ -e "$1" ];
+then
+    touch "$1".tmp
+    cat "$1" >> "$1".tmp
+    if [ -x /usr/bin/nano ];
+    then
+        echo "Using the nano editor..."
+        sleep 1
+        nano "$1".tmp
+    elif [ -x /usr/bin/emacs ];
+    then
+        echo "Using the emacs editor..."
+        sleep 1
+        emacs "$1".tmp
+    elif [ -x /usr/bin/vim ];
+    then
+        echo "Using the vim editor..."
+        sleep 1
+        vim "$1".tmp
+    else
+        echo "No supported file editor."
+        rm "$1".tmp
+        exit 1
+    fi
+    mv -f "$1".tmp "$1"
+    chmod 400 "$1"
+else
+    if [ -x /usr/bin/nano ];
+    then
+        echo "Using the nano editor..."
+        sleep 1
+        nano "$1".tmp
+    elif [ -x /usr/bin/emacs ];
+    then
+        echo "Using the emacs editor..."
+        sleep 1
+        emacs "$1".tmp
+    elif [ -x /usr/bin/vim ];
+    then
+        echo "Using the vim editor..."
+        sleep 1
+        vim "$1".tmp
+    else
+        echo "No supported file editor."
+        rm "$1".tmp
+        exit 1
+    fi
+    mv -f "$1".tmp "$1"
+    chmod 400 "$1"
+fi
+
+echo 'Done!'
+exit 0
