@@ -2,7 +2,7 @@
 
 if [ $# -ne 2 ] && [ $# -ne 1 ] || [ "$1" = '--help' ];
 then
-    echo -e "GNU PFED v1.0.0\nUsage: pfed filename"
+    echo -e "PFED v1.0.0\nUsage: pfed filename"
     exit 1
 fi
 
