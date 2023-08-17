@@ -2,8 +2,14 @@
 
 if [ $# -ne 2 ] && [ $# -ne 1 ] || [ "$1" = '--help' ];
 then
-    echo -e "PFED v1.0.0\nUsage: pfed filename"
-    exit 1
+    echo -e "PFED Copyright (C) 2022 linux-coding649\n
+    This program comes with ABSOLUTELY NO WARRANTY; for details type `pfed --license'.\n
+    This is free software, and you are welcome to redistribute it\n
+    under certain conditions; type `pfed --license' for details.\nUsage: pfed filename"
+    exit 0
+elif [ $# -ne 2 ] && [ $# -ne 1 ] || [ "$1" = '--license' ];
+then
+    echo -e "This program complies with the GNU General Public License Version 3\n"
 fi
 
 if [ -e "$1" ];
